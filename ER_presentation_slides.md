@@ -52,7 +52,7 @@
 | • Product movement detail linkage complete थिएन। | • Transfer header र transferred items बीच strong relation देखाउनू। | • `transfer_item(transfer_id, product_id)` junction table + FKs राखेर transfer details fully normalized गरियो। |
 
 **Closing line (speaker note):**  
-“Yo before-feedback-after changes le model lai clear, practical, ra MongoDB document design ko lagi better बनायो.”
+“Yo before-feedback-after changes le ER model lai clear, normalized, ra implementation ko lagi practical बनायो.”
 
 ---
 
