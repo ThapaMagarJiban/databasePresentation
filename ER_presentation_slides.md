@@ -29,10 +29,10 @@
 **Title:** Key Feedback from Assignment 1
 
 **Add 2–5 bullets from teacher feedback:**
-- [Feedback 1]
-- [Feedback 2]
-- [Feedback 3]
-- [Feedback 4]
+- Payment/bank details लाई customer structure बाट छुट्याएर normalized entity बनाउनू।
+- Purchase header र line-items बीच cardinality/ownership अझ clear देखाउनू।
+- Stock location rule (Store vs Warehouse) constraint level मा enforce गर्नू।
+- Stock transfer source model लाई warehouse/store दुवै support हुने गरी clarify गर्नू।
 
 **What to say:**
 - Assignment 1 ma yesta main feedback points aayeko thiyo.
