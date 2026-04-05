@@ -41,25 +41,13 @@
 ---
 
 ## Slide 4: Feedback Improvements (Before → Feedback → After)
-1. **Before (Initial Design):** Customer entity maa bank details direct राखेको थिएँ (sort code, account number).  
-   **Received Feedback:** Sensitive/payment details lai alag entity/table/structure maa राख्दा design clean ra scalable हुन्छ।  
-   **After (Improvement):** Bank details lai separate Bank collection/entity reference गरेँ; customer schema cleaner बन्यो।
-
-2. **Before (Initial Design):** Purchase ra PurchaseItem relation unclear थियो।  
-   **Received Feedback:** Line-items ko cardinality ra ownership clear देखाउनु।  
-   **After (Improvement):** MongoDB maa `purchases` document bhitra `items` array embed गरेर 1-to-many relation स्पष्ट बनाएँ।
-
-3. **Before (Initial Design):** Stock location modeling mixed थियो (store/warehouse clarity कम थियो)।  
-   **Received Feedback:** Inventory location logic स्पष्ट गर, ambiguity हटाऊ।  
-   **After (Improvement):** `inventory` structure maa location type (`store`/`warehouse`) explicit field राखेँ ra query सरल बनाएँ।
-
-4. **Before (Initial Design):** Transfer details normalize गरिए पनि read गर्दा joins धेरै चाहिन्थ्यो।  
-   **Received Feedback:** NoSQL conversion गर्दा read-heavy operation optimize गर।  
-   **After (Improvement):** `stockTransfers` maa transfer items array embed गरें, ek query maa transfer detail आउँछ।
-
-5. **Before (Initial Design):** Query support fields/index plan mention गरिएको थिएन।  
-   **Received Feedback:** Query प्रदर्शनका लागि indexing rationale देखाऊ।  
-   **After (Improvement):** `customer_id`, `product_id`, `purchase_date` maa indexes add गरेर performance justify गरें।
+| Before (Initial Design) | Received Feedback | After (Improvement) |
+|---|---|---|
+| - Customer entity maa bank details direct राखेको थिएँ (sort code, account number). | - Sensitive/payment details lai alag entity/table/structure maa राख्दा design clean ra scalable हुन्छ। | - Bank details lai separate Bank collection/entity reference गरेँ; customer schema cleaner बन्यो। |
+| - Purchase ra PurchaseItem relation unclear थियो। | - Line-items ko cardinality ra ownership clear देखाउनु। | - MongoDB maa `purchases` document bhitra `items` array embed गरेर 1-to-many relation स्पष्ट बनाएँ। |
+| - Stock location modeling mixed थियो (store/warehouse clarity कम थियो)। | - Inventory location logic स्पष्ट गर, ambiguity हटाऊ। | - `inventory` structure maa location type (`store`/`warehouse`) explicit field राखेँ ra query सरल बनाएँ। |
+| - Transfer details normalize गरिए पनि read गर्दा joins धेरै चाहिन्थ्यो। | - Read-heavy operation optimize गर। | - `stockTransfers` maa transfer items array embed गरें, ek query maa transfer detail आउँछ। |
+| - Query support fields/index plan mention गरिएको थिएन। | - Query प्रदर्शनका लागि indexing rationale देखाऊ। | - `customer_id`, `product_id`, `purchase_date` maa indexes add गरेर performance justify गरें। |
 
 **Closing line (speaker note):**  
 “Yo before-feedback-after changes le model lai clear, practical, ra MongoDB document design ko lagi better बनायो.”
