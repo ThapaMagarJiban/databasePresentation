@@ -47,15 +47,15 @@ Document features to justify:
 - **Date-based filtering**: query purchases/transfers by date ranges for period-wise reporting
 
 Suggested slide content (Slide 3 — NoSQL Features Implemented):
-- Referenced collections for core master data
+- Embedded documents (`purchase_items`, `transfer_items`)
 - Arrays for line-item modeling
 - Aggregation pipelines for analytics/reporting
 - Date-based querying and temporal filtering
 
 Speaker script (3:00–3:30):
-“The implementation demonstrates practical NoSQL capabilities: referenced collections for stable master data, arrays for transaction line items, and aggregation pipelines for reporting.
-Date-based filters are also used for period-wise analysis.
-Together, these features make MongoDB suitable for transaction-plus-reporting workloads in this scenario.”
+“The implementation demonstrates core NoSQL capabilities: embedded documents, arrays, flexible fields, and aggregation pipelines.
+Embedded line-item structures are used in purchase and transfer records, and date-based filtering supports period-wise reporting.
+These features make MongoDB very suitable for transaction-plus-reporting workloads like this one.”
 
 ---
 
