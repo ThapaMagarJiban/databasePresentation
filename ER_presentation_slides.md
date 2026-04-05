@@ -45,11 +45,11 @@
 
 | Before (Initial Design) | Received Feedback | After (Improvement) |
 |---|---|---|
-| • Customer entity maa bank details direct राखेको थिएँ (sort code, account number). | • Sensitive/payment details lai alag entity/table/structure maa राख्दा design clean ra scalable हुन्छ। | • Bank details lai separate Bank collection/entity reference गरेँ; customer schema cleaner बन्यो। |
-| • Purchase ra PurchaseItem relation unclear थियो। | • Line-items ko cardinality ra ownership clear देखाउनु। | • MongoDB maa `purchases` document bhitra `items` array embed गरेर 1-to-many relation स्पष्ट बनाएँ। |
-| • Stock location modeling mixed थियो (store/warehouse clarity कम थियो)। | • Inventory location logic स्पष्ट गर, ambiguity हटाऊ। | • `inventory` structure maa location type (`store`/`warehouse`) explicit field राखेँ ra query सरल बनाएँ। |
-| • Transfer details normalize गरिए पनि read गर्दा joins धेरै चाहिन्थ्यो। | • Read-heavy operation optimize गर। | • `stockTransfers` maa transfer items array embed गरें, ek query maa transfer detail आउँछ। |
-| • Query support fields/index plan mention गरिएको थिएन। | • Query प्रदर्शनका लागि indexing rationale देखाऊ। | • `customer_id`, `product_id`, `purchase_date` maa indexes add गरेर performance justify गरें। |
+| • Customer ra bank detail एउटै structure मा mix थियो। | • Payment/bank detail लाई normalized entity मा छुट्याउनू। | • `customer` मा `bank_sort_code` FK राखेर `bank(sort_code)` सँग reference बनाइयो। |
+| • Purchase line-items को relation स्पष्ट थिएन। | • Purchase र item बीचको cardinality/ownership clear देखाउनू। | • `purchase` (header) र `purchase_item` (detail) अलग table बनाएर 1:M relation स्पष्ट गरियो। |
+| • Stock कहाँ राखिएको छ भन्ने logic ambiguous थियो। | • Store vs Warehouse location rule enforce हुने design चाहियो। | • `stock` table मा `store_id`/`warehouse_id` मध्ये exactly one मात्र रहने constraint राखियो। |
+| • Transfer source modeling rigid/unclear थियो। | • Transfer source warehouse वा store दुवै support हुने model चाहियो। | • `stock_transfer` मा `source_warehouse_id` र `source_store_id` राखेर conditional CHECK constraints define गरियो। |
+| • Product movement detail linkage complete थिएन। | • Transfer header र transferred items बीच strong relation देखाउनू। | • `transfer_item(transfer_id, product_id)` junction table + FKs राखेर transfer details fully normalized गरियो। |
 
 **Closing line (speaker note):**  
 “Yo before-feedback-after changes le model lai clear, practical, ra MongoDB document design ko lagi better बनायो.”
