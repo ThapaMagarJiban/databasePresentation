@@ -41,9 +41,21 @@ Suggested mapping to explain:
 - `stockTransfers` (with embedded transfer items array)
 
 Document features to justify:
-- **Nested documents**: address/contact/bank details in customer profile (if read together)
-- **Arrays**: purchase items and transfer items
-- **References**: product/store/customer IDs where cross-entity updates are frequent
+- **Referenced collections**: keep master data (`customers`, `products`, `stores`, `warehouses`) separate to avoid heavy duplication
+- **Arrays for line items**: represent multi-item transactions in purchase/transfer records
+- **Aggregation pipelines**: generate reporting outputs (top-selling products, revenue by store, transfer summaries)
+- **Date-based filtering**: query purchases/transfers by date ranges for period-wise reporting
+
+Suggested slide content (Slide 3 — NoSQL Features Implemented):
+- Referenced collections for core master data
+- Arrays for line-item modeling
+- Aggregation pipelines for analytics/reporting
+- Date-based querying and temporal filtering
+
+Speaker script (3:00–3:30):
+“The implementation demonstrates practical NoSQL capabilities: referenced collections for stable master data, arrays for transaction line items, and aggregation pipelines for reporting.
+Date-based filters are also used for period-wise analysis.
+Together, these features make MongoDB suitable for transaction-plus-reporting workloads in this scenario.”
 
 ---
 
